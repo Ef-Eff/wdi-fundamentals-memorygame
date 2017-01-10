@@ -1,29 +1,49 @@
 
-/*document.getElementById('next').innerHTML = '<a href="http://www.amazon.com/Flamethrowers-Rachel-Kushner/dp/1439142017/ref=sr_1_1?ie=UTF8&qid=1458897183&sr=8-1&keywords=the+flamethrowers">The Flamethrowers</a>'
-document.querySelector('li').innerHTML = "The wind up <strong>Bird</strong> Chronicle."
-document.querySelectorAll('li')[3].textContent = "I'm the fourth!"
-document.getElementsByClassName('current')[0].innerHTML = "Manipulating the DOM is fun!"
-var k = document.getElementsByClassName('current');
-for (var i = 0; i < k.length; i++) {
-	k[i].className = 'finished';
-}
-document.getElementById('next').className = 'current';
-document.getElementById('next').removeAttribute('id')
-document.getElementsByTagName('li')[3].setAttribute('id','next')*/
-
-
-var cardOne = "queen";
-var cardTwo = "queen";
-var cardThree = "king";
-var cardFour = "king";
-
+var cards = ['queen', 'queen', 'king', 'king'];
+var cardAmount = cards.length
+var cardsInPlay = [];
+var currentScore = 0;
 var board = document.getElementById('game-board');
-var createCards = function(x) {
-	for (var i = 0; i < x; i++) {
+var scoreNumber = document.querySelector('#scoreNumber');
+function createCards() {
+	for (var i = 0; i < cards.length; i++) {
 		var a = document.createElement('div');
 		a.className = 'card';
-	
+		a.setAttribute('data-card', cards[i]);
+		a.addEventListener('click', isTwoCards);
 		board.appendChild(a);
 	}
 }
-createCards(4)
+
+function isMatch(cards) {
+  if (cards[0] == cards[1]) {
+  	currentScore++
+  	document.querySelector('#scoreNumber').innerHTML = currentScore;
+  	 if (currentScore == 10) {
+    	scoreNumber.style.cssText = 'font-size:50px;color:red;font-family:papyrus;';
+    }
+    alert('You found a match!');
+  } else {
+    alert('Sorry, try again.');
+    for (i = 0; i < cardAmount; i++) {
+    	document.querySelectorAll('.card')[i].innerHTML = ''; 
+    }
+  }
+}
+
+function isTwoCards() {
+	cardsInPlay.push(this.getAttribute('data-card'));
+	if (this.getAttribute('data-card') == 'king') {
+		this.innerHTML = '<img src="King.png" alt="King of Spades">';
+	} else {
+		this.innerHTML = '<img src="Queen.png" alt="Queen of Spades">';
+	}
+	if (cardsInPlay.length == 2) {
+		isMatch(cardsInPlay);
+		cardsInPlay = [];
+	}
+}
+
+createCards()
+
+

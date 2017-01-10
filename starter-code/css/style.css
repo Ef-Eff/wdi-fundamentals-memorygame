@@ -1,13 +1,14 @@
 
-body {
-	text-align: center;
-}
 h1 {
 	color: rgb(2, 132, 130);
-	
+	text-align: center;
 }
 h2 {
 	color: #ffd700;
+	text-align: center;
+}
+p {
+	text-align: center;
 }
 nav {
 	background-color: #808080;
@@ -27,6 +28,10 @@ footer {
 	background-color: #808080;
 	text-align: center;
 }
+img {
+	height: 200px;
+	width: 150px;
+}
 .clearfix:after {
 	visibility: hidden;
 	display: block;
@@ -38,16 +43,25 @@ footer {
 .board {
 	display: inline-block;
 	width: 50%;
+	height: 80%;
 }
 .card {
 	height: 200px;
 	width: 150px;
 	border: 1px solid black;
 	background: yellow;
-	border-radius: 10px;
+	border-radius: 20px;
 	margin: 8%;
 	float: left;
 }
+.card:hover {
+	background-color: gold;
+}
 .name {
 	color: #ff0000;
+}
+
+.score {
+	font-weight: 800;
+	font-size: 20px;
 }
