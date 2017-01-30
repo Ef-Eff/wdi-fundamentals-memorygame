@@ -3,6 +3,7 @@ var cards = ['queen', 'queen', 'king', 'king'];
 var cardAmount = cards.length
 var cardsInPlay = [];
 var currentScore = 0;
+var cardsFlipped = 0;
 var board = document.getElementById('game-board');
 var scoreNumber = document.querySelector('#scoreNumber');
 function createCards() {
@@ -25,10 +26,8 @@ function isMatch(cards) {
     alert('You found a match!');
   } else {
     alert('Sorry, try again.');
-    for (i = 0; i < cardAmount; i++) {
-    	document.querySelectorAll('.card')[i].innerHTML = ''; 
-    }
   }
+  clearCards();
 }
 
 function isTwoCards() {
@@ -43,7 +42,12 @@ function isTwoCards() {
 		cardsInPlay = [];
 	}
 }
-
+function clearCards() {
+	for (i = 0; i < cardAmount; i++) {
+    	document.querySelectorAll('.card')[i].innerHTML = ''; 
+    }
+}
 createCards()
+
 
 

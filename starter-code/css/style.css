@@ -43,7 +43,6 @@ img {
 .board {
 	display: inline-block;
 	width: 50%;
-	height: 80%;
 }
 .card {
 	height: 200px;
@@ -51,8 +50,8 @@ img {
 	border: 1px solid black;
 	background: yellow;
 	border-radius: 20px;
-	margin: 8%;
 	float: left;
+	margin: 8%;
 }
 .card:hover {
 	background-color: gold;
